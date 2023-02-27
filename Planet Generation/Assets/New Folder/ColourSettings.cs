@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class Colour_Settings : ScriptableObject
+[CreateAssetMenu()]
+public class ColourSettings : ScriptableObject
 {
     public Color planetColour;
 }

@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6346fe1cd218541b48ab99dd8164d1, type: 3}
+  m_Script: {fileID: 11500000, guid: a09f383fcee8b544ca7b2f117907ff17, type: 3}
   m_Name: Colour
   m_EditorClassIdentifier: 
+  planetColour: {r: 1, g: 0, b: 0, a: 0}
