@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Terrain_Face
 {
@@ -51,6 +52,11 @@ public class Terrain_Face
                     triIndex += 6;
                 }
             }
+
+    
+
+
+            
         }
         mesh.Clear();
         mesh.vertices = vertices;

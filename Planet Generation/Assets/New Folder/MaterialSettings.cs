@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu()]
-public class ColourSettings : ScriptableObject
+public class MaterialSettings
 {
-    public Color planetColour;
     public Material planetMaterial;
+
 }
