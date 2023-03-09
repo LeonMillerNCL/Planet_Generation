@@ -1,7 +1,7 @@
-Shader "Custom/DistanceColorShader" {
+Shader "Custom/SphereDistanceColor" {
     Properties{
-        _MainTex("Texture", 2D) = "white" {}
         _Color("Color", Color) = (1,1,1,1)
+        _Radius("Radius", Range(0.1, 10.0)) = 1.0
     }
         SubShader{
             Pass {
@@ -16,35 +16,23 @@ Shader "Custom/DistanceColorShader" {
 
                 struct v2f {
                     float4 vertex : SV_POSITION;
-                    float4 color : COLOR;
+                    float distance : TEXCOORD0;
                 };
+
+                float4 _Color;
+                float _Radius;
 
                 v2f vert(appdata v) {
                     v2f o;
                     o.vertex = UnityObjectToClipPos(v.vertex);
+                    o.distance = length(UnityObjectToWorldPos(v.vertex)) / _Radius;
+                    return o;
+                }
 
-                    // Calculate distance from origin
-                    float dist = length(v.vertex);
-
-                    // Set vertex color based on distance
-                    if (dist < 1.0) {
-                        o.color = float4(0.0, 1.0, 0.0, 1.0); // Green for grass
-                    }
-     else if (dist < 2.0) {
-      o.color = float4(0.5, 0.5, 0.5, 1.0); // Grey for stone
-  }
-else {
- o.color = float4(1.0, 1.0, 1.0, 1.0); // White for everything else
-}
-
-return o;
-}
-
-float4 frag(v2f i) : SV_Target {
-    return i.color;
-}
-ENDCG
-}
-        }
-            FallBack "Diffuse"
+                fixed4 frag(v2f i) : SV_Target {
+                    return _Color * (1.0 - i.distance);
+                }
+                ENDCG
+            }
+    }
 }
