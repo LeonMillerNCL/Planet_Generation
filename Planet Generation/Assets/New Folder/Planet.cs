@@ -17,7 +17,8 @@ public class Planet : MonoBehaviour
     [HideInInspector]
     public bool colourSettingsFoldout;
 
-    ShapeGenerator shapeGenerator;
+    ShapeGenerator shapeGenerator = new ShapeGenerator();
+    Colour_Generator colourGenerator= new Colour_Generator();
 
     [SerializeField, HideInInspector]
     MeshFilter[] meshFilters;
@@ -26,7 +27,8 @@ public class Planet : MonoBehaviour
 
     void Initialize()
     {
-        shapeGenerator = new ShapeGenerator(shapeSettings);
+        shapeGenerator.updateSettings(shapeSettings);
+        colourGenerator.UpdateSettings(colourSettings);
 
         if (meshFilters == null || meshFilters.Length == 0)
         {
@@ -84,13 +86,12 @@ public class Planet : MonoBehaviour
         {
             face.ConstructMesh();
         }
-    }
+        colourGenerator.UpdateElevation(shapeGenerator.ElevationMinMax);
+
+    } 
 
     void GenerateColours()
     {
-        foreach (MeshFilter m in meshFilters)
-        {
-            m.GetComponent<MeshRenderer>().sharedMaterial.color = colourSettings.planetColour;
-        }
+        colourGenerator.UpdateColours();
     }
 }
