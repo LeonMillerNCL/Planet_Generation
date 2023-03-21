@@ -29,7 +29,7 @@ MonoBehaviour:
     useFirstLayerAsMask: 0
     noiseSettings:
       filterType: 1
-      strength: 0.19
+      strength: 0.21
       numLayers: 5
       baseRoughness: 1.09
       roughness: 0.99
