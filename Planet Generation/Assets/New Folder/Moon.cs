@@ -4,53 +4,106 @@ using UnityEngine;
 
 public class Moon : MonoBehaviour
 {
+
     [Range(2, 256)]
     public int resolution = 10;
+    public bool autoUpdate = true;
+
+    public ShapeSettings shapeSettings;
+    public ColourSettings colourSettings;
+
+    [HideInInspector]
+    public bool shapeSettingsFoldout;
+    [HideInInspector]
+    public bool colourSettingsFoldout;
+
+    ShapeGenerator shapeGenerator = new ShapeGenerator();
+    Colour_Generator colourGenerator = new Colour_Generator();
 
     [SerializeField, HideInInspector]
     MeshFilter[] meshFilters;
-    MoonTerrainFace[] moonTerrainFaces;
+    Terrain_Face[] terrainFaces;
 
-    private void OnValidate()
-    {
-        Initialize();
-        GenerateMesh();
-    }
 
     void Initialize()
     {
+        shapeGenerator.updateSettings(shapeSettings);
+        colourGenerator.UpdateSettings(colourSettings);
+
         if (meshFilters == null || meshFilters.Length == 0)
         {
             meshFilters = new MeshFilter[6];
         }
-        moonTerrainFaces = new MoonTerrainFace[6];
+        terrainFaces = new Terrain_Face[6];
 
-        Vector3[] directions = { Vector3.up, Vector2.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
+        Vector3[] directions = { Vector3.up, Vector3.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
 
         for (int i = 0; i < 6; i++)
         {
-            GameObject meshObj = new GameObject("mesh");
-            meshObj.transform.parent = transform;
+            if (meshFilters[i] == null)
+            {
+                GameObject meshObj = new GameObject("mesh");
+                meshObj.transform.parent = transform;
 
-            meshObj.AddComponent<MeshRenderer>().sharedMaterial = new Material(Shader.Find("Standard"));
-            meshFilters[i] = meshObj.AddComponent<MeshFilter>();
-            meshFilters[i].sharedMesh = new Mesh();
+                meshObj.AddComponent<MeshRenderer>();
+                meshFilters[i] = meshObj.AddComponent<MeshFilter>();
+                meshFilters[i].sharedMesh = new Mesh();
+            }
+            meshFilters[i].GetComponent<MeshRenderer>().sharedMaterial = colourSettings.planetMaterial;
 
-            moonTerrainFaces[i] = new MoonTerrainFace(meshFilters[i].sharedMesh, resolution, directions[i]);
+            terrainFaces[i] = new Terrain_Face(shapeGenerator, meshFilters[i].sharedMesh, resolution, directions[i]);
         }
     }
 
-    public void OnShapeSettingsUpdate()
+    public void GeneratePlanet()
     {
         Initialize();
         GenerateMesh();
+        GenerateColours();
+    }
+
+    public void GenerateWater()
+    {
+        Initialize();
+        GenerateMesh();
+        GenerateWaterColours();
+    }
+
+    public void OnShapeSettingsUpdated()
+    {
+        if (autoUpdate)
+        {
+            Initialize();
+            GenerateMesh();
+        }
+    }
+
+    public void OnColourSettingsUpdated()
+    {
+        if (autoUpdate)
+        {
+            Initialize();
+            GenerateColours();
+        }
     }
 
     void GenerateMesh()
     {
-        foreach (MoonTerrainFace face in moonTerrainFaces)
+        foreach (Terrain_Face face in terrainFaces)
         {
             face.ConstructMesh();
         }
+        colourGenerator.UpdateElevation(shapeGenerator.ElevationMinMax);
+
+    }
+
+    void GenerateColours()
+    {
+        colourGenerator.UpdateColours();
+    }
+
+    void GenerateWaterColours()
+    {
+        colourGenerator.UpdateColours();
     }
 }

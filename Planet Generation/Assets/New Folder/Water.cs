@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Planet : MonoBehaviour
+public class Water : MonoBehaviour
 {
-
     [Range(2, 256)]
     public int resolution = 10;
     public bool autoUpdate = true;
@@ -18,7 +17,7 @@ public class Planet : MonoBehaviour
     public bool colourSettingsFoldout;
 
     ShapeGenerator shapeGenerator = new ShapeGenerator();
-    Colour_Generator colourGenerator= new Colour_Generator();
+    Colour_Generator colourGenerator = new Colour_Generator();
 
     [SerializeField, HideInInspector]
     MeshFilter[] meshFilters;
@@ -55,14 +54,12 @@ public class Planet : MonoBehaviour
         }
     }
 
-    public void GeneratePlanet()
+    public void GenerateWater()
     {
         Initialize();
         GenerateMesh();
-        GenerateColours();
+        GenerateWaterColours();
     }
-
- 
 
     public void OnShapeSettingsUpdated()
     {
@@ -78,7 +75,7 @@ public class Planet : MonoBehaviour
         if (autoUpdate)
         {
             Initialize();
-            GenerateColours();
+            GenerateWaterColours();
         }
     }
 
@@ -90,12 +87,12 @@ public class Planet : MonoBehaviour
         }
         colourGenerator.UpdateElevation(shapeGenerator.ElevationMinMax);
 
-    } 
+    }
 
-    void GenerateColours()
+    void GenerateWaterColours()
     {
         colourGenerator.UpdateColours();
     }
 
-    
+
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 781cc897cf8675041a751163b51f97dd, type: 3}
-  m_Name: HDRenderPipelineGlobalSettings
+  m_Name: HDRenderPipelineGlobalSettings 1
   m_EditorClassIdentifier: 
   m_DefaultVolumeProfile: {fileID: 11400000, guid: eac5077387b32034d922706b2c21b315, type: 2}
   m_LookDevVolumeProfile: {fileID: 11400000, guid: c5f756613bbe411418f5400bfcb44f57, type: 2}
@@ -86,8 +86,8 @@ MonoBehaviour:
   lensAttenuationMode: 0
   colorGradingSpace: 0
   diffusionProfileSettingsList:
-  - {fileID: 11400000, guid: 7062f280b89b381459c0838d6efba3b9, type: 2}
-  - {fileID: 11400000, guid: afee8c9c7faec0b4a939f5b2ac2d48f5, type: 2}
+  - {fileID: 11400000, guid: a00d711f8ab1c854a9641226f089baea, type: 2}
+  - {fileID: 11400000, guid: 524053a8e81ef414284e0bdb6f2a8fdf, type: 2}
   rendererListCulling: 0
   DLSSProjectId: 000000
   useDLSSCustomProjectId: 0
