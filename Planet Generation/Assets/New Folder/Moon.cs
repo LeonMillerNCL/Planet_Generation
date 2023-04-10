@@ -55,19 +55,14 @@ public class Moon : MonoBehaviour
         }
     }
 
-    public void GeneratePlanet()
+    public void GenerateMoon()
     {
         Initialize();
         GenerateMesh();
-        GenerateColours();
+        GenerateMoonColours();
     }
 
-    public void GenerateWater()
-    {
-        Initialize();
-        GenerateMesh();
-        GenerateWaterColours();
-    }
+  
 
     public void OnShapeSettingsUpdated()
     {
@@ -83,7 +78,7 @@ public class Moon : MonoBehaviour
         if (autoUpdate)
         {
             Initialize();
-            GenerateColours();
+            GenerateMoonColours();
         }
     }
 
@@ -97,13 +92,9 @@ public class Moon : MonoBehaviour
 
     }
 
-    void GenerateColours()
+    void GenerateMoonColours()
     {
         colourGenerator.UpdateColours();
     }
 
-    void GenerateWaterColours()
-    {
-        colourGenerator.UpdateColours();
-    }
 }

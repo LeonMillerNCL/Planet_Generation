@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Water))]
-public class WaterEditor : Editor
+[CustomEditor(typeof(Moon))]
+public class MoonEditor : Editor
 {
 
-    Water water;
+    Moon moon;
     Editor shapeEditor;
     Editor colourEditor;
 
@@ -18,17 +18,17 @@ public class WaterEditor : Editor
             base.OnInspectorGUI();
             if (check.changed)
             {
-                water.GenerateWater();
+                moon.GenerateMoon();
             }
         }
 
         if (GUILayout.Button("Generate Water"))
         {
-            water.GenerateWater();
+            moon.GenerateMoon();
         }
 
-        DrawSettingsEditor(water.shapeSettings, water.OnShapeSettingsUpdated, ref water.shapeSettingsFoldout, ref shapeEditor);
-        DrawSettingsEditor(water.colourSettings, water.OnColourSettingsUpdated, ref water.colourSettingsFoldout, ref colourEditor);
+        DrawSettingsEditor(moon.shapeSettings, moon.OnShapeSettingsUpdated, ref moon.shapeSettingsFoldout, ref shapeEditor);
+        DrawSettingsEditor(moon.colourSettings, moon.OnColourSettingsUpdated, ref moon.colourSettingsFoldout, ref colourEditor);
     }
 
     void DrawSettingsEditor(Object settings, System.Action onSettingsUpdated, ref bool foldout, ref Editor editor)
@@ -57,6 +57,6 @@ public class WaterEditor : Editor
 
     private void OnEnable()
     {
-        water = (Water)target;
+        moon = (Moon)target;
     }
 }
