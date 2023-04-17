@@ -41,5 +41,5 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  planetMaterial: {fileID: 0}
+  planetMaterial: {fileID: 2100000, guid: cb1041b1b31269e49a4e7ce39a312c10, type: 2}
   waterColour: {r: 1, g: 1, b: 1, a: 0}
