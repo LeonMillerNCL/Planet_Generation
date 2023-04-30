@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bbc86340a79eb14a8c8e359fadc8158, type: 3}
-  m_Name: MoonShape
+  m_Script: {fileID: 11500000, guid: df91f9ed71b73bd49b9711619c336cd3, type: 3}
+  m_Name: Crators
   m_EditorClassIdentifier: 
-  planetRadius: 1
-  noiseLayers: []

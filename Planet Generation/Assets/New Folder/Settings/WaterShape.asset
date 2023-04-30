@@ -12,5 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bbc86340a79eb14a8c8e359fadc8158, type: 3}
   m_Name: WaterShape
   m_EditorClassIdentifier: 
-  planetRadius: 2.57
-  noiseLayers: []
+  planetRadius: 1
+  noiseLayers:
+  - enabled: 1
+    useFirstLayerAsMask: 0
+    noiseSettings:
+      filterType: 0
+      strength: 0.34
+      numLayers: 2
+      baseRoughness: 1.35
+      roughness: 0.97
+      persistence: 0.1
+      centre: {x: 0, y: 0, z: 0}
+      minValue: 0.33
+  - enabled: 1
+    useFirstLayerAsMask: 1
+    noiseSettings:
+      filterType: 0
+      strength: 0.1
+      numLayers: 2
+      baseRoughness: 2.76
+      roughness: 1.33
+      persistence: 0.64
+      centre: {x: 0, y: 0, z: 0}
+      minValue: 0
+  - enabled: 1
+    useFirstLayerAsMask: 1
+    noiseSettings:
+      filterType: 0
+      strength: 0.1
+      numLayers: 2
+      baseRoughness: 2.76
+      roughness: 1.33
+      persistence: 0.64
+      centre: {x: 0, y: 0, z: 0}
+      minValue: 0

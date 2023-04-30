@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Unity.VisualScripting;
 
 [CustomEditor(typeof(Moon))]
 public class MoonEditor : Editor
@@ -10,6 +11,7 @@ public class MoonEditor : Editor
     Moon moon;
     Editor shapeEditor;
     Editor colourEditor;
+    Editor craterEditor;
 
     public override void OnInspectorGUI()
     {
@@ -29,6 +31,7 @@ public class MoonEditor : Editor
 
         DrawSettingsEditor(moon.shapeSettings, moon.OnShapeSettingsUpdated, ref moon.shapeSettingsFoldout, ref shapeEditor);
         DrawSettingsEditor(moon.colourSettings, moon.OnColourSettingsUpdated, ref moon.colourSettingsFoldout, ref colourEditor);
+        DrawSettingsEditor(moon.craterSettings, moon.OnCratersSettingsUpdate, ref moon.craterSettingFoldout, ref craterEditor);
     }
 
     void DrawSettingsEditor(Object settings, System.Action onSettingsUpdated, ref bool foldout, ref Editor editor)

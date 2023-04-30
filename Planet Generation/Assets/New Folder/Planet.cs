@@ -62,15 +62,6 @@ public class Planet : MonoBehaviour
         GenerateColours();
     }
 
-    /*public void GenerateWater()
-    {
-        Initalize();
-        GenerateMesh();
-        GenerateWaterColours();
-    }
-    
-     */
-
     public void OnShapeSettingsUpdated()
     {
         if (autoUpdate)
